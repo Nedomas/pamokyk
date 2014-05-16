@@ -1,0 +1,57 @@
+header
+  a.logo href='/'
+    = inline_svg 'logo.svg'
+
+  section.main-field
+    p.hero-text
+      | Noriu išmokti
+    p.ui.input.focus
+      input#learn type="text" placeholder="tapyti akvarele"
+
+  section.main-field
+    p.hero-text
+      | Galiu pamokyti
+    p.ui.input.focus
+      input#teach type="text" placeholder="groti gitara"
+
+  section.main-field
+    p.hero-text
+      | Kur?
+    .ui.selection.dropdown
+      input type="hidden" name="where"
+        .default.text Vilnius
+        i.dropdown.icon
+        .menu.ui.transition.hidden
+          - @cities.each do |key, value|
+            .item data-value="#{value}" #{key}
+
+  section.main-button
+    p.ui.facebook.button#post
+      i.facebook.icon
+      | PASKELBTI
+    p.privacy
+      | Paskelbsime tik vieną žinutę ant tavo Facebook sienos ir tavo postas atsiras čia.
+
+main
+  .ui.feed.segment
+    h2.ui.header Paskutiniai pamokymai
+
+    .single-post.event
+      .label
+        = image_tag 'avatar1.jpg'
+      .content
+        p.name <a>Domas Bitvinskas</a>
+        p.date prieš 1 minutę‎
+        .cf
+        .summary
+          p.post Pamokysiu tave <span class='thing'>programuoti</span>, jei tu pamokysi mane <span class='thing'>tapyti akvarele</span> Vilniuje.
+
+    .single-post.event
+      .label
+        = image_tag 'avatar2.jpg'
+      .content
+        p.name <a>Domas Bitvinskas</a>
+        p.date prieš 1 minutę‎
+        .cf
+        .summary
+          p.post Pamokysiu tave <span class='thing'>programuoti</span>, jei tu pamokysi mane <span class='thing'>tapyti akvarele</span> Vilniuje.
