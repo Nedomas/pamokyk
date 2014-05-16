@@ -18,7 +18,7 @@ header
     p.hero-text
       | Kur?
     .ui.selection.dropdown
-      input type="hidden" name="where"
+      input#where type="hidden" name="where"
         .default.text Vilnius
         i.dropdown.icon
         .menu.ui.transition.hidden
@@ -36,22 +36,22 @@ main
   .ui.feed.segment
     h2.ui.header Paskutiniai pamokymai
 
-    .single-post.event
-      .label
-        = image_tag 'avatar1.jpg'
-      .content
-        p.name <a>Domas Bitvinskas</a>
-        p.date prieš 1 minutę‎
-        .cf
-        .summary
-          p.post Pamokysiu tave <span class='thing'>programuoti</span>, jei tu pamokysi mane <span class='thing'>tapyti akvarele</span> Vilniuje.
-
-    .single-post.event
-      .label
-        = image_tag 'avatar2.jpg'
-      .content
-        p.name <a>Domas Bitvinskas</a>
-        p.date prieš 1 minutę‎
-        .cf
-        .summary
-          p.post Pamokysiu tave <span class='thing'>programuoti</span>, jei tu pamokysi mane <span class='thing'>tapyti akvarele</span> Vilniuje.
+    - @posts.each do |post|
+      .single-post.event
+        .label
+          img src="https://graph.facebook.com/#{post.facebook_id}/picture"
+        .content
+          a.name href="#{post.facebook_link}" target='_blank'
+            = post.name
+          p.date
+            = timeago(post.created_at)
+          .cf
+          .summary
+            p.post
+              | Pamokysiu tave
+              span.thing
+                = " #{post.teach}"
+              | , jei tu pamokysi mane
+              span.thing
+                = " #{post.learn}"
+              = " #{post.where}."

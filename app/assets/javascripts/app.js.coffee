@@ -7,34 +7,48 @@ window.App = (->
         appId: '664103826970623',
         xfbml: true,
         version: 'v2.0'
+
     $('.ui.dropdown').dropdown()
+    $('.timeago').timeago()
     $('#post').click(share)
 
   share = ->
-    FB.login(->
-      FB.api '/me/feed', 'post',
-        message: 'Hello, world!',
-        access_token: 'CAACEdEose0cBAPUOfbfRZBvQJ4jphYLtPa4zc63bMNZBP4Od8eKQWoPJ07XPZCbbsb6GVKxk1c3xgDeXBSI91LhzufP1goR8VP738arqWaQbVL0hwSAXU5QPe40xUECgSIVfocLB6gGpC1ZCRrjOQakmV3C3JGS5VkwtintWwoa7YRP9xqOPo9ZA9l7J0XoYZD'
-    ,
-      scope: 'publish_actions'
-    )
-    # FB.ui(
-    #   method: 'feed',
-    #   name: 'The Facebook SDK for Javascript',
-    #   caption: 'Bringing Facebook to the desktop and mobile web',
-    #   description: 'Shit',
-    #   link: 'https://developers.facebook.com/docs/reference/javascript/',
-    #   picture: 'http://www.fbrell.com/public/f8.jpg'
-    # # method: 'share',
-    # # href: 'https://developers.facebook.com/docs/',
-    # , (response) ->
-    #   console.log(response)
-    #   debugger
-    #   # if response && response.post_id
-    #   #   alert('Post was published.')
-    #   # else
-    #   #   alert('Post was not published.')
-    # )
+    window.inputs = {}
+    window.inputs.learn = $('#learn').val()
+    window.inputs.teach = $('#teach').val()
+    window.inputs.where = $('#where').val() || 'Vilniuje'
+
+    fields_missing = _.any window.inputs, (val, key) ->
+      _.isEmpty(val)
+
+    if fields_missing
+      alert('Pasakyk, ką nori išmokti')
+    else
+      FB.login(post, { scope: 'user_about_me,publish_actions' })
+
+  post = ->
+    main_text = 'Pamokysiu tave ' + inputs.teach + ', jei tu pamokysi mane ' + inputs.learn + ' ' + inputs.where
+
+    post_data = {
+      name: main_text,
+      message: main_text,
+      description: main_text,
+      link: 'http://pamokyk.lt',
+      picture: "http://www.domasbitvinskas.com/images/success-is-consistency.png",
+      icon: 'https://www.namecheap.com/favicon.ico'
+    }
+
+    FB.api('/me/feed', 'post', post_data, afterPost)
+
+  afterPost = (post_id) ->
+    FB.api('/me', getData)
+
+  getData = (resp) ->
+    $.getJSON('/save',
+      resp: resp,
+      inputs: inputs
+    ).then (success) ->
+      location.reload()
 
   return {
     init: init,
