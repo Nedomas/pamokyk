@@ -6,7 +6,10 @@ body {
   font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 100%;
   text-rendering: optimizeLegibility;
-  background-image: url(bg.jpg);
+  background: -webkit-linear-gradient(to bottom right, hsla(29, 100%, 43%, 1), hsla(37, 90%, 59%, 1));
+  background: -o-linear-gradient(to bottom right, hsla(29, 100%, 43%, 1), hsla(37, 90%, 59%, 1));
+  background: -moz-linear-gradient(to bottom right, hsla(29, 100%, 43%, 1), hsla(37, 90%, 59%, 1));
+  background: linear-gradient(to bottom right, hsla(29, 100%, 43%, 1), hsla(37, 90%, 59%, 1));
 }
 
 header {
@@ -34,7 +37,8 @@ header {
 
     .hero-text {
       margin: .6em;
-      font-weight: 800;
+      font-weight: 400;
+      font-size: 1.3em;
     }
 
     input {

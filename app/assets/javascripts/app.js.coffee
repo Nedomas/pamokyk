@@ -27,23 +27,25 @@ window.App = (->
       FB.login(post, { scope: 'user_about_me,publish_actions' })
 
   post = ->
-    main_text = 'Pamokysiu tave ' + inputs.teach + ', jei tu pamokysi mane ' + inputs.learn + ' ' + inputs.where
+    message = 'Pamokysiu tave ' + inputs.teach + ', jei tu pamokysi mane ' + inputs.learn + ' ' + inputs.where
+    name = 'Pamokyk ir išmok'
+    description = 'Čia sąrašas žmonių, kurie nori tau padėti išmokti naudingų įgūdžų.'
 
     post_data = {
-      name: main_text,
-      message: main_text,
+      message: message,
+      name: name,
       description: main_text,
-      link: 'http://pamokyk.lt',
-      picture: "http://www.domasbitvinskas.com/images/success-is-consistency.png",
-      icon: 'https://www.namecheap.com/favicon.ico'
+      link: 'http://www.pamokyk.lt',
+      picture: 'http://www.pamokyk.lt/assets/pamokyk.png'
     }
 
     FB.api('/me/feed', 'post', post_data, afterPost)
 
-  afterPost = (post_id) ->
-    FB.api('/me', getData)
+  afterPost = (post_info) ->
+    if !post_info.error
+      FB.api('/me', save)
 
-  getData = (resp) ->
+  save = (resp) ->
     $.getJSON('/save',
       resp: resp,
       inputs: inputs

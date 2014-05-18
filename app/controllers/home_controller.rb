@@ -5,6 +5,8 @@ class HomeController < ApplicationController
     'Klaipėda' => 'Klaipėdoje',
     'Šiauliai' => 'Šiauliuose',
     'Panevėžys' => 'Panevėžyje',
+    'Alytus' => 'Alytuje',
+    'Marijampolė' => 'Marijampolėje',
     'Raseiniai' => 'Raseiniuose'
   }
 
