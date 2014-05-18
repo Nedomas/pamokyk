@@ -34,7 +34,7 @@ window.App = (->
     post_data = {
       message: message,
       name: name,
-      description: main_text,
+      description: description,
       link: 'http://www.pamokyk.lt',
       picture: 'http://www.pamokyk.lt/assets/pamokyk.png'
     }
