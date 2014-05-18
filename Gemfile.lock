@@ -61,6 +61,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.10.0)
     multipart-post (2.0.0)
+    newrelic_rpm (3.8.1.221)
     pg (0.17.1)
     polyglot (0.3.4)
     pry (0.9.12.6)
@@ -135,6 +136,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   koala
+  newrelic_rpm
   pg
   pry
   rails (= 4.0.4)

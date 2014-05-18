@@ -11,6 +11,7 @@ gem 'slim'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
+gem 'newrelic_rpm'
 
 group :production do
   gem 'rails_12factor'
