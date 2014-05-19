@@ -14,8 +14,8 @@ window.App = (->
 
   share = ->
     window.inputs = {}
-    window.inputs.learn = $('#learn').val()
-    window.inputs.teach = $('#teach').val()
+    window.inputs.learn = $('#learn').val().toLowerCase()
+    window.inputs.teach = $('#teach').val().toLowerCase()
     window.inputs.where = $('#where').val() || 'Vilniuje'
 
     fields_missing = _.any window.inputs, (val, key) ->
