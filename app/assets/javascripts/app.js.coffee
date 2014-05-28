@@ -29,7 +29,7 @@ window.App = (->
   post = ->
     message = 'Pamokysiu tave ' + inputs.teach + ', jei tu pamokysi mane ' + inputs.learn + ' ' + inputs.where
     name = 'Pamokyk ir išmok'
-    description = 'Čia sąrašas žmonių, kurie nori tau padėti išmokti naudingų įgūdžų.'
+    description = 'Čia sąrašas žmonių, kurie nori tau padėti išmokti naudingų įgūdžių.'
 
     post_data = {
       message: message,
