@@ -139,6 +139,17 @@ main {
 @media only screen and (max-width : 768px) {
   main {
     width: 100%;
+
+    .header {
+      .left, .right {
+        float: none;
+      }
+
+      .right {
+        text-align: center;
+        margin: 1em 0;
+      }
+    }
   }
 }
 

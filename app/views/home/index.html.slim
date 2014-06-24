@@ -35,14 +35,16 @@ header
 main
   .ui.feed.segment
     .header
-      h2.ui.left Paskutiniai pamokymai
-      .right.ui.selection.dropdown
-        input#filter type="hidden" name="filter"
-          .default.text Visi miestai
-          i.dropdown.icon
-          .menu.ui.transition.hidden
-            - { 'Visi miestai' => 'visi' }.merge(@cities).each do |key, value|
-              .item data-value="#{value}" #{key}
+      .left
+        h2.ui Paskutiniai pamokymai
+      .right
+        .ui.selection.dropdown
+          input#filter type="hidden" name="filter"
+            .default.text Visi miestai
+            i.dropdown.icon
+            .menu.ui.transition.hidden
+              - { 'Visi miestai' => 'visi' }.merge(@cities).each do |key, value|
+                .item data-value="#{value}" #{key}
 
     .no-posts.hidden
       .event
