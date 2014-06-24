@@ -34,10 +34,21 @@ header
 
 main
   .ui.feed.segment
-    h2.ui.header Paskutiniai pamokymai
+    .header
+      h2.ui.left Paskutiniai pamokymai
+      .right.ui.selection.dropdown
+        input#filter type="hidden" name="filter"
+          .default.text Visi miestai
+          i.dropdown.icon
+          .menu.ui.transition.hidden
+            - { 'Visi miestai' => 'visi' }.merge(@cities).each do |key, value|
+              .item data-value="#{value}" #{key}
 
+    .no-posts.hidden
+      .event
+        h3 Deja - pamokymų šiame mieste vis dar nėra.
     - @posts.each do |post|
-      .single-post.event
+      .single-post.event data-where=post.where
         .label
           img src="https://graph.facebook.com/#{post.facebook_id}/picture"
         .content

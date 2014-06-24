@@ -69,6 +69,24 @@ main {
 
   .header {
     color: #222222;
+
+    h2 {
+      font-size: 1.8em;
+      font-weight: 700;
+    }
+
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+    }
+  }
+
+  h3 {
+    text-align: center;
+    padding: 2em;
+    font-size: 1.1em;
   }
 
   .feed {
@@ -93,6 +111,10 @@ main {
     -moz-transition: color 0.3s ease;
     transition: color 0.3s ease;
   }
+}
+
+.hidden {
+  display: none !important;
 }
 
 // Clearfix

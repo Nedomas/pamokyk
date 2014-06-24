@@ -11,6 +11,26 @@ window.App = (->
     $('.ui.dropdown').dropdown()
     $('.timeago').timeago()
     $('#post').click(share)
+    $('#filter').change(filter)
+
+  filter = ->
+    city = $('#filter').val() || 'visi'
+    all_posts = $('.single-post')
+    all_posts.addClass('hidden')
+    $('.no-posts').addClass('hidden')
+
+    if city == 'visi'
+      all_posts.removeClass('hidden')
+    else
+      show_filtered_posts(city)
+
+  show_filtered_posts = (city) ->
+    matched_posts = $('*[data-where="' + city + '"]')
+
+    if matched_posts.length
+      matched_posts.removeClass('hidden')
+    else
+      $('.no-posts').removeClass('hidden')
 
   share = ->
     window.inputs = {}
